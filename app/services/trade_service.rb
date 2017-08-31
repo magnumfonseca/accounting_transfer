@@ -34,6 +34,7 @@ class TradeService
   def valid?
     raise 'Source account does not exists.' unless source_account
     raise 'Destination account does not exists.' unless destination_account
+    raise 'Not enough amount to deposit.' if amount <= 0
     raise 'Not enough money on the source account.' if amount > source_account.balance
   end
 end

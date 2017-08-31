@@ -7,11 +7,11 @@ class DepositService
 
   def initialize(destination_account_id, amount)
     @destination_account = Account.find(destination_account_id) rescue nil
-    @amount = amount
+    @amount = amount.to_f
   end
 
   def call
-    return false unless valid?
+    valid?
     ActiveRecord::Base.transaction do
       Trade.create!(account_id: destination_account.id, amount: amount)
       destination_account.update_attributes(balance: destination_account.balance + amount)
@@ -21,9 +21,7 @@ class DepositService
   private
 
   def valid?
-    return false if amount <= 0
-    return false unless destination_account.present?
-
-    true
+    raise 'Not enough amount to deposit.' if amount <= 0
+    raise 'Destination account does not exists.' unless destination_account
   end
 end

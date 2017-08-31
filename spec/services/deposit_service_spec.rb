@@ -24,7 +24,7 @@ describe DepositService do
       let(:amount) { -2 }
 
       it "does not makes a deposit on account" do
-        expect(subject).to be_falsey
+        expect { subject }.to raise_error( 'Not enough amount to deposit.' )
 
         account.reload
 
@@ -38,7 +38,7 @@ describe DepositService do
     let(:amount) { 10 }
 
     it "does not makes a deposit on account" do
-      expect(subject).to be_falsey
+      expect { subject }.to raise_error('Destination account does not exists.')
     end
   end
 end
