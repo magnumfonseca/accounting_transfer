@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: postgres
+  password: postgres
+
+development:
+  <<: *default
+  database: accouting-transfer_development
+
+test:
+  <<: *default
+  database: accouting-transfer_test
+
+production:
+  <<: *default
+  database: accouting-transfer_production
+  username: accouting-transfer
+  password: <%= ENV['ACCOUTING-TRANSFER_DATABASE_PASSWORD'] %>
