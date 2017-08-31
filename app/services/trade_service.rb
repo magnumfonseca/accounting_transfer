@@ -8,7 +8,7 @@ class TradeService
   def initialize(source_account_id, destination_account_id, amount)
     @source_account = Account.find(source_account_id) rescue nil
     @destination_account = Account.find(destination_account_id) rescue nil
-    @amount = amount
+    @amount = amount.to_f
   end
 
   def call
