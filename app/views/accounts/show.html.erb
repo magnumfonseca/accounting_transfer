@@ -1,0 +1,62 @@
+<nav class="navbar navbar-inverse bg-inverse" role="navigation">
+  <div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="#" class="navbar-brand">
+          <i class="glyphicon glyphicon-user"></i>
+          <%= @account.name %>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<br/>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="hero-widget well well-sm">
+        <div class="icon">
+          <i class="glyphicon glyphicon-btc"></i>
+        </div>
+        <div class="text">
+          <var id="balance"><%= currency_number(@account.balance) %></var>
+          <label class="text-muted">Balance</label>
+        </div>
+        <div class="options">
+          <%= link_to "Update Balance", '#', onclick: "getBalance(#{@account.id})", class: "btn btn-default btn-lg" %>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="hero-widget well well-sm">
+        <div class="icon">
+          <i class="glyphicon glyphicon-share-alt"></i>
+        </div>
+        <div class="text">
+          <label class="text-muted">Trade</label>
+        </div>
+        <div>
+          <input type="number" id="destination_account_id" placeholder="Destination account" class="form-control"></input>
+          <input type="number" id="amount" placeholder="Amount" class="form-control"></input>
+        </div>
+        <div class="options">
+          <%= link_to "Send", '#', onclick: "tradeAmount(#{@account.id})", class: "btn btn-default btn-lg" %>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="hero-widget well well-sm">
+        <div class="icon">
+          <i class="glyphicon glyphicon-list"></i>
+        </div>
+        <div class="text">
+          <var>Extract</var>
+          <label class="text-muted">Last 20 trades</label>
+        </div>
+        <div class="options">
+          <%= link_to "View", '#', onclick: "tradeHistory(#{@account.id})", class: "btn btn-default btn-lg" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

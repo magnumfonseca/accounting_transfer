@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root to: "sessions#new"
+
   namespace :api do
     namespace :v1 do
       resources :trades, only:  :create
@@ -6,4 +8,7 @@ Rails.application.routes.draw do
       resources :balance, only: :show
     end
   end
+
+  resources :sessions, only: [:new, :create, :destroy]
+  resources :accounts, only: [:show]
 end
