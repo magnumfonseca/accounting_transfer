@@ -1,24 +1,32 @@
-# README
+# Accounting Transfer
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project is an accounting system where each client has an account and can make transfers to other clients accounts. The client can also ask the current balance of his account. Consider that this bank only handles one type of currency that is brazilian Real (BRL).
+This system works unda a API system, but also has an interface to make trades. 
 
-Things you may want to cover:
+## Getting Started
 
-* Ruby version
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-* System dependencies
+### Prerequisites
 
-* Configuration
+* postgres '9.6'
+* ruby '2.3.4'
+* rails '~> 5.1.3'
 
-* Database creation
+### Installing
 
-* Database initialization
+Configure config/database.yml with your postgres settings and execute:
+```
+$ bin/setup
+```
+And then run to populate the database: 
+```
+$ rails db:seed
+```
 
-* How to run the test suite
+## Running tests
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* APIs and requests were tested with rspec
+```
+  rspec spec
+```
